@@ -93,12 +93,14 @@
 				
 				//监听蒙层点击事件
 				beforeWebView.addEventListener('maskClick', function(){
-					currentWebview.close('auto');
+					if(currentWebview != null){
+						currentWebview.close('auto');
+						uni.navigateBack({
+				  		    delta:1
+				  		})
+					}
 				  	beforeWebView.setStyle({
 				  		mask:'none'
-				  	})
-				  	uni.navigateBack({
-				  		delta:1
 				  	})
 				  	currentWebview = null
 				},false); 
